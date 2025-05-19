@@ -1,0 +1,97 @@
+site_name: Chart Insights System
+site_description: Automated chart insights generation with GraphRAG
+site_author: Chart Insights Team
+repo_url: https://github.com/yourusername/chart_insights_system
+repo_name: chart_insights_system
+edit_uri: edit/main/docs/
+
+nav:
+  - Home: index.md
+  - User Guide:
+    - Getting Started: user/getting-started.md
+    - Installation: user/installation.md
+    - Usage: user/usage.md
+    - Chart Types: user/chart-types.md
+    - Insight Types: user/insight-types.md
+    - Configuration: user/configuration.md
+    - FAQs: user/faqs.md
+  - Developer Guide:
+    - Development: DEVELOPMENT.md
+    - Architecture: dev/architecture.md
+    - Knowledge Graph: dev/knowledge-graph.md
+    - GraphRAG: dev/graphrag.md
+    - Neo4j Integration: dev/neo4j-integration.md
+    - Testing: dev/testing.md
+    - Contributing: ../CONTRIBUTING.md
+  - API Reference:
+    - Chart Analysis: api/chart-analysis.md
+    - Knowledge Graph: api/knowledge-graph.md
+    - GraphRAG: api/graphrag.md
+    - Insights Generation: api/insights-generation.md
+  - About:
+    - Roadmap: ROADMAP.md
+    - Changelog: CHANGELOG.md
+    - License: ../LICENSE.md
+
+theme:
+  name: material
+  palette:
+    primary: indigo
+    accent: blue
+  logo: assets/logo.png
+  favicon: assets/favicon.ico
+  features:
+    - navigation.expand
+    - navigation.indexes
+    - navigation.tabs
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          selection:
+            docstring_style: google
+          rendering:
+            show_source: true
+            show_root_heading: true
+            show_root_full_path: false
+            show_category_heading: true
+            heading_level: 2
+            show_if_no_docstring: false
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - codehilite
+  - def_list
+  - footnotes
+  - md_in_html
+  - pymdownx.highlight:
+      use_pygments: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - toc:
+      permalink: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yourusername/chart_insights_system
+  version:
+    provider: mike
+
+extra_css:
+  - stylesheets/extra.css

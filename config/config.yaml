@@ -1,0 +1,72 @@
+# Configuration for Chart Insights System
+
+# LLM Settings
+llm:
+  provider: "mock"    # Options: openai, azure, huggingface, anthropic, mock
+  model: "gpt-4"      # Specific model to use
+  api_key: ""         # Set your API key here or use environment variables
+  temperature: 0.1    # Lower temperature for more deterministic outputs
+  max_tokens: 2000    # Maximum tokens for LLM responses
+
+# Graph Database Settings
+graph_db:
+  provider: "neo4j"   # Options: neo4j, falkordb, memory
+  uri: "bolt://localhost:7687"
+  username: "neo4j"
+  password: "password"  # Make sure this matches what you set when creating chart-insights-dbms
+  database: "neo4j"
+  require_connection: true  # If true, will fail if Neo4j is not available
+
+# Chart Analysis Settings
+chart_analysis:
+  supported_types:
+    - "bar"
+    - "line"
+    - "pie"
+    - "scatter"
+    - "area"
+  ocr_engine: "pytesseract"
+  ocr_config: "--psm 6"
+  
+# Knowledge Graph Settings
+knowledge_graph:
+  schema_validation: true
+  community_detection: "louvain"  # Algorithm for community detection
+  relationship_threshold: 0.5     # Minimum confidence for relationship extraction
+
+# GraphRAG Settings
+graph_rag:
+  max_hops: 3         # Maximum hops in graph traversal
+  context_window: 5   # Number of context nodes to include
+  query_strategies:
+    - "direct_match"
+    - "similarity_match"
+    - "multi_hop"
+
+# Insight Generation
+insights:
+  types:
+    - "trend"
+    - "comparison"
+    - "anomaly"
+    - "correlation"
+  confidence_threshold: 0.7  # Minimum confidence score for insights
+  max_insights_per_chart: 5  # Maximum number of insights to generate
+
+# UI Settings
+ui:
+  theme: "light"      # Options: light, dark
+  max_charts_per_page: 5
+  auto_refresh_interval: 0  # In seconds, 0 to disable
+
+# Logging
+logging:
+  level: "INFO"       # Options: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  file: "logs/chart_insights.log"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# System
+system:
+  cache_dir: "cache"
+  temp_dir: "temp"
+  max_workers: 4      # Maximum number of worker threads
